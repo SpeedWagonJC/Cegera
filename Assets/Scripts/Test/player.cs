@@ -14,6 +14,11 @@ public class player : MonoBehaviour
     [Header("Jump")]
     public float fuerzaSalto = 6f;
 
+    [Header("GrounbdCheck")]
+    public Transform groundCheckPos;
+    public Vector2 groundCheckSize = new Vector2(0.5f, 0.5f);
+    public LayerMask groundLayer;
+
     [Header("Dash")]
     public float dashSpeed = 10f;
     public float dashDuration =0.05f;
@@ -23,6 +28,7 @@ public class player : MonoBehaviour
 
     [Header("CoreMech")]
     public GameObject[] objetoscambiar;
+    bool isNormal;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,10 +59,32 @@ public class player : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (isGrounded())
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
+            if (context.performed)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
+            }
+            else if (context.canceled)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+            }
         }
+    }
+
+    private bool isGrounded()
+    {
+        if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
     }
 
     public void Dash(InputAction.CallbackContext context)
@@ -90,10 +118,25 @@ public class player : MonoBehaviour
     {
         foreach (GameObject obj in objetoscambiar)
         {
-            if(obj != null)
+            if (obj != null)
             {
                 obj.SetActive(!obj.activeSelf);
             }
         }
+        isNormal = isNormal ? false : true;
+        Debug.Log("Hola");
     }
+
+    /*void OnInteract()         //unsure how to implement send messages to the rest of methods
+    {
+        foreach (GameObject obj in objetoscambiar)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(!obj.activeSelf);
+            }
+        }
+        isNormal = isNormal ? false : true;
+        Debug.Log("Hola");
+    }*/
 }
