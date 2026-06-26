@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class pinchos : MonoBehaviour
 {
+    public Vector3 playerStart;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -18,7 +20,7 @@ public class pinchos : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            other.transform.position = Vector3.zero;
+            other.transform.position = playerStart;
         }
     }
 }

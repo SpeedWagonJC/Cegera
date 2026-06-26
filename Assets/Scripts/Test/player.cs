@@ -13,10 +13,12 @@ public class player : MonoBehaviour
 
     [Header("Jump")]
     public float fuerzaSalto = 6f;
+    public int maxJumps = 2;
+    int jumpsRemaining;
 
     [Header("GrounbdCheck")]
     public Transform groundCheckPos;
-    public Vector2 groundCheckSize = new Vector2(0.5f, 0.5f);
+    public Vector3 groundCheckSize = new Vector3(0.5f, 0.05f, 0.5f);
     public LayerMask groundLayer;
 
     [Header("Dash")]
@@ -43,6 +45,7 @@ public class player : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
         }
+        GroundCheck();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -59,26 +62,31 @@ public class player : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (isGrounded())
+        if (jumpsRemaining > 0)
         {
             if (context.performed)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
+                jumpsRemaining--;
             }
             else if (context.canceled)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+                jumpsRemaining--;
             }
         }
     }
 
-    private bool isGrounded()
+    private void GroundCheck()
     {
-        if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        if (Physics.CheckBox(
+            groundCheckPos.position,
+            groundCheckSize,
+            Quaternion.identity,
+            groundLayer))
         {
-            return true;
+            jumpsRemaining = maxJumps;
         }
-        return false;
     }
 
     private void OnDrawGizmosSelected()
@@ -127,16 +135,4 @@ public class player : MonoBehaviour
         Debug.Log("Hola");
     }
 
-    /*void OnInteract()         //unsure how to implement send messages to the rest of methods
-    {
-        foreach (GameObject obj in objetoscambiar)
-        {
-            if (obj != null)
-            {
-                obj.SetActive(!obj.activeSelf);
-            }
-        }
-        isNormal = isNormal ? false : true;
-        Debug.Log("Hola");
-    }*/
 }
