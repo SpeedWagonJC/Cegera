@@ -16,10 +16,13 @@ public class player : MonoBehaviour
 
     [Header("Dash")]
     public float dashSpeed = 10f;
-    public float dashDuration =0.1f;
+    public float dashDuration =0.05f;
     public float dashCooldown = 0.1f;
     bool isDashing;
     bool canDash = true;
+
+    [Header("CoreMech")]
+    public GameObject[] objetoscambiar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,6 +42,13 @@ public class player : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
+
+        if(horizontalMovement == 1)
+        {
+            isFacingRight = true;
+        }else if(horizontalMovement == -1){
+            isFacingRight = false;
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -74,5 +84,16 @@ public class player : MonoBehaviour
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+
+    public void Cambio(InputAction.CallbackContext context)
+    {
+        foreach (GameObject obj in objetoscambiar)
+        {
+            if(obj != null)
+            {
+                obj.SetActive(!obj.activeSelf);
+            }
+        }
     }
 }
