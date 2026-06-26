@@ -14,6 +14,7 @@ public class player : MonoBehaviour
     [Header("Jump")]
     public float fuerzaSalto = 6f;
     public int maxJumps = 2;
+    private int intmaxJumps ;     //uso interno, para funcionamiento de cambio de cambio de estado
     int jumpsRemaining;
 
     [Header("GrounbdCheck")]
@@ -30,12 +31,12 @@ public class player : MonoBehaviour
 
     [Header("CoreMech")]
     public GameObject[] objetoscambiar;
-    bool isNormal;
+    bool isBall;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        intmaxJumps = maxJumps;
     }
 
     // Update is called once per frame
@@ -85,7 +86,7 @@ public class player : MonoBehaviour
             Quaternion.identity,
             groundLayer))
         {
-            jumpsRemaining = maxJumps;
+            jumpsRemaining = intmaxJumps;
         }
     }
 
@@ -131,8 +132,18 @@ public class player : MonoBehaviour
                 obj.SetActive(!obj.activeSelf);
             }
         }
-        isNormal = isNormal ? false : true;
-        Debug.Log("Hola");
+        if (isBall)
+        {
+            isBall = false;
+            canDash = true;
+            intmaxJumps = 1;
+        }
+        else
+        {
+            isBall = true;
+            canDash = false;
+            intmaxJumps = maxJumps;
+        }
     }
 
 }
