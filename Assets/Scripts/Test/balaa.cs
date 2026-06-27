@@ -34,6 +34,7 @@ public class balaa : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("le di pa");
             Destroy(gameObject);
         }
     }
