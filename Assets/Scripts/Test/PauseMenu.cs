@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
     {
         panelPausa.SetActive(false);
 
-        // Cargar volumen guardado (si no existe, usa 1)
+        
         float volumenGuardado = PlayerPrefs.GetFloat(VOLUMEN_KEY, 1f);
         AudioListener.volume = volumenGuardado;
 
@@ -59,7 +59,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("menu");
     }
 
-    // 🔊 Cambiar y guardar volumen
+    
     public void CambiarVolumen(float valor)
     {
         AudioListener.volume = valor;
@@ -67,7 +67,7 @@ public class PauseMenu : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // ❌ Salir del juego
+    
     public void SalirDelJuego()
     {
         Time.timeScale = 1f;
