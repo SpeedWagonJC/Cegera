@@ -13893,7 +13893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8635442620535031105, guid: 2814720fe73575b4996c20b9b028a843, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.134
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 8635442620535031105, guid: 2814720fe73575b4996c20b9b028a843, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15917,7 +15917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1296683579
 Transform:
   m_ObjectHideFlags: 0
@@ -17301,6 +17301,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 494c760ff274c9a42bd231ce03679d21, type: 3}
   m_PrefabInstance: {fileID: 930281052}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1423425725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6615453908777597619, guid: 9ddc98a39125ed8448858d9284a96f9e, type: 3}
+  m_PrefabInstance: {fileID: 1588068485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1455151220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18679,6 +18684,10 @@ PrefabInstance:
     - target: {fileID: 6615453908777597619, guid: 9ddc98a39125ed8448858d9284a96f9e, type: 3}
       propertyPath: m_Name
       value: torreta
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615453908777597619, guid: 9ddc98a39125ed8448858d9284a96f9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22524,7 +22533,7 @@ PrefabInstance:
       objectReference: {fileID: 1612688392}
     - target: {fileID: 988032040603951438, guid: ca020d4c2606cca4b96b932840db46cc, type: 3}
       propertyPath: deteccion
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1522439084634041145, guid: ca020d4c2606cca4b96b932840db46cc, type: 3}
       propertyPath: m_Name
@@ -25298,7 +25307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2298066555933465552, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 127.37
+      value: 12.86
       objectReference: {fileID: 0}
     - target: {fileID: 2298066555933465552, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25354,7 +25363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5616541338158672859, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
       propertyPath: objetoscambiar.Array.size
-      value: 43
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5616541338158672859, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
       propertyPath: 'objetoscambiar.Array.data[0]'
@@ -25528,6 +25537,14 @@ PrefabInstance:
       propertyPath: 'objetoscambiar.Array.data[42]'
       value: 
       objectReference: {fileID: 1656105309}
+    - target: {fileID: 5616541338158672859, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
+      propertyPath: 'objetoscambiar.Array.data[43]'
+      value: 
+      objectReference: {fileID: 1296683578}
+    - target: {fileID: 5616541338158672859, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
+      propertyPath: 'objetoscambiar.Array.data[44]'
+      value: 
+      objectReference: {fileID: 1423425725}
     - target: {fileID: 5771016788128673879, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
       propertyPath: m_Name
       value: Player
