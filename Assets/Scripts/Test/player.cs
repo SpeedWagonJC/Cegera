@@ -80,6 +80,14 @@ public class player : MonoBehaviour
         {
             animator.SetBool("isRoll", false);
             animator.SetBool("isWalk", false);
+            if (isBall)
+            {
+                chPositions(0);
+            }
+            else
+            {
+                chPositions(1);
+            }
         }
         if (horizontalMovement != 0)
         {
@@ -203,20 +211,18 @@ public class player : MonoBehaviour
 
     private async void chPositions(int stt)
     {
-        if (stt == 4 || stt == 5 || stt == 7 || stt == 8)
-        {
-            Sprt.localPosition = sprtPos[stt];
-            await Task.Delay(600);
-        }
-        if(stt == 0 || stt == 1)
+        if(stt == 0 && !isBall || stt == 1 && isBall)
         {
             Sprt.localPosition = sprtPos[6];
             await Task.Delay(600);
             Sprt.localPosition = sprtPos[stt];
-        }
-        if(stt == 2 || stt == 3)
+        }else if(stt == 0 || stt == 1 || stt == 2 || stt == 3)
         {
             Sprt.localPosition = sprtPos[stt];
+        }else if (stt == 4 || stt == 5 || stt == 7 || stt == 8)
+        {
+            Sprt.localPosition = sprtPos[stt];
+            await Task.Delay(100);
         }
     }
 }
