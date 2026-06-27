@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4514136183829306490}
   - component: {fileID: 1550293570816647720}
   - component: {fileID: 7448400163719596321}
-  - component: {fileID: 7679742112747931606}
+  - component: {fileID: 7763029594121449694}
   m_Layer: 0
   m_Name: torreta
   m_TagString: Untagged
@@ -183,7 +183,7 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7679742112747931606
+--- !u!114 &7763029594121449694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,16 +192,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6615453908777597619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c04fa4d80e1dbf940b738940d76f0715, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aa238a3370567a43969e53483c44ba0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::torreta
-  bala: {fileID: 2511073352487493993, guid: 9553f986ea08892418fb21a6508d1159, type: 3}
-  balaPos: {fileID: 1148007148075592072}
-  velocidadRotacion: 5
-  offsetAngulo: -90
-  spriteRendererHijo: {fileID: 0}
-  spritesDisparo: []
-  tiempoEntreSprites: 0.03
+  m_EditorClassIdentifier: Assembly-CSharp::disparotorreta
+  bala: {fileID: 2511073352487493993, guid: af3d2490a7377cd4796c35554034e94e, type: 3}
+  balaPos: {fileID: 0}
 --- !u!1 &7459520649400767688
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 593649070480351432}
+  - component: {fileID: 7251549903561763199}
   - component: {fileID: 7532807636389952475}
   m_Layer: 0
   m_Name: Sprite
@@ -228,12 +224,34 @@ Transform:
   m_GameObject: {fileID: 7459520649400767688}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.013, y: -0.54, z: 0}
+  m_LocalPosition: {x: 0.013, y: -0.54, z: -0.232}
   m_LocalScale: {x: 5.2865305, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4514136183829306490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7251549903561763199
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7459520649400767688}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e139c49c1cff2d48934db66c10d9e0b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &7532807636389952475
 SpriteRenderer:
   serializedVersion: 2
