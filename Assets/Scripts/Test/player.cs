@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System.Threading.Tasks;
 
 public class player : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class player : MonoBehaviour
     public Vector3 groundCheckSize = new Vector3(0.5f, 0.05f, 0.5f);
     public LayerMask groundLayer;
 
+    [Header("Positions")]
+    public Collider Coll;
+    public Transform Sprt;
+    public Vector3[] sprtPos = new Vector3[9];
+    public Vector3[] collPos = new Vector3[9];
+
     [Header("Dash")]
     public float dashSpeed = 10f;
     public float dashDuration =0.05f;
@@ -41,6 +48,7 @@ public class player : MonoBehaviour
     void Start()
     {
         intmaxJumps = maxJumps;
+        Sprt.localPosition = sprtPos[0];
     }
 
     void Update()
@@ -56,8 +64,6 @@ public class player : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
-        //animator.SetTrigger("isWalk");
-        //animator.SetTrigger("isRoll");
 
         if(horizontalMovement == 1)
         {
@@ -74,6 +80,17 @@ public class player : MonoBehaviour
         {
             animator.SetBool("isRoll", false);
             animator.SetBool("isWalk", false);
+        }
+        if (horizontalMovement != 0)
+        {
+            if (isBall)
+            {
+                chPositions(2);
+            }
+            else
+            {
+                chPositions(3);
+            }
         }
     }
 
@@ -98,6 +115,7 @@ public class player : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
                 jumpsRemaining--;
                 animator.SetTrigger("isJump");
+                chPositions(5);
             }
             else if (context.canceled)
             {
@@ -132,6 +150,7 @@ public class player : MonoBehaviour
         {
             StartCoroutine(DashCoroutine());
             animator.SetTrigger("isDash");
+            chPositions(4);
         }
     }
 
@@ -169,6 +188,7 @@ public class player : MonoBehaviour
             canDash = false;
             intmaxJumps = maxJumps;
             animator.SetBool("isBall", false);
+            chPositions(1);
         }
         else
         {
@@ -176,9 +196,27 @@ public class player : MonoBehaviour
             canDash = true;
             intmaxJumps = 1;
             animator.SetBool("isBall", true);
+            chPositions(0);
         }
         animator.SetTrigger("isTrans");
-        Debug.Log(isBall);
     }
 
+    private async void chPositions(int stt)
+    {
+        if (stt == 4 || stt == 5 || stt == 7 || stt == 8)
+        {
+            Sprt.localPosition = sprtPos[stt];
+            await Task.Delay(600);
+        }
+        if(stt == 0 || stt == 1)
+        {
+            Sprt.localPosition = sprtPos[6];
+            await Task.Delay(600);
+            Sprt.localPosition = sprtPos[stt];
+        }
+        if(stt == 2 || stt == 3)
+        {
+            Sprt.localPosition = sprtPos[stt];
+        }
+    }
 }
