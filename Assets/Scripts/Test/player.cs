@@ -14,8 +14,8 @@ public class player : MonoBehaviour
     [Header("Jump")]
     public float fuerzaSalto = 6f;
     public int maxJumps = 2;
-    private int intmaxJumps ;     //uso interno, para funcionamiento de cambio de cambio de estado
-    int jumpsRemaining;
+    private int intmaxJumps = 1;     //uso interno, para funcionamiento de cambio de cambio de estado, strats with one for being a ball
+    int jumpsRemaining = 1;
 
     [Header("GrounbdCheck")]
     public Transform groundCheckPos;
@@ -31,15 +31,18 @@ public class player : MonoBehaviour
 
     [Header("CoreMech")]
     public GameObject[] objetoscambiar;
-    bool isBall;
+    bool isBall = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Animations")]
+    public SpriteRenderer sr;
+    public Animator animator;
+    private float xPosLastFrame;
+
     void Start()
     {
         intmaxJumps = maxJumps;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isDashing)
@@ -47,18 +50,43 @@ public class player : MonoBehaviour
             rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
         }
         GroundCheck();
+        FlipcharacterX();
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
+        //animator.SetTrigger("isWalk");
+        //animator.SetTrigger("isRoll");
 
         if(horizontalMovement == 1)
         {
             isFacingRight = true;
-        }else if(horizontalMovement == -1){
-            isFacingRight = false;
+            animator.SetBool("isRoll", true);
+            animator.SetBool("isWalk", true);
         }
+        else if(horizontalMovement == -1){
+            isFacingRight = false;
+            animator.SetBool("isRoll", true);
+            animator.SetBool("isWalk", true);
+        }
+        else
+        {
+            animator.SetBool("isRoll", false);
+            animator.SetBool("isWalk", false);
+        }
+    }
+
+    private void FlipcharacterX()
+    {
+        if(transform.position.x > xPosLastFrame)
+        {
+            sr.flipX = false;
+        }else if (transform.position.x < xPosLastFrame)
+        {
+            sr.flipX = true;
+        }
+        xPosLastFrame = transform.position.x;
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -69,12 +97,14 @@ public class player : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
                 jumpsRemaining--;
+                animator.SetTrigger("isJump");
             }
             else if (context.canceled)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
                 jumpsRemaining--;
             }
+            
         }
     }
 
@@ -101,6 +131,7 @@ public class player : MonoBehaviour
         if (context.performed && canDash)
         {
             StartCoroutine(DashCoroutine());
+            animator.SetTrigger("isDash");
         }
     }
 
@@ -135,15 +166,19 @@ public class player : MonoBehaviour
         if (isBall)
         {
             isBall = false;
-            canDash = true;
-            intmaxJumps = 1;
+            canDash = false;
+            intmaxJumps = maxJumps;
+            animator.SetBool("isBall", false);
         }
         else
         {
             isBall = true;
-            canDash = false;
-            intmaxJumps = maxJumps;
+            canDash = true;
+            intmaxJumps = 1;
+            animator.SetBool("isBall", true);
         }
+        animator.SetTrigger("isTrans");
+        Debug.Log(isBall);
     }
 
 }
