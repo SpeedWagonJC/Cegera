@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System.Threading.Tasks;
 
 public class player : MonoBehaviour
 {
@@ -14,13 +15,19 @@ public class player : MonoBehaviour
     [Header("Jump")]
     public float fuerzaSalto = 6f;
     public int maxJumps = 2;
-    private int intmaxJumps ;     //uso interno, para funcionamiento de cambio de cambio de estado
-    int jumpsRemaining;
+    private int intmaxJumps = 1;     //uso interno, para funcionamiento de cambio de cambio de estado, strats with one for being a ball
+    int jumpsRemaining = 1;
 
     [Header("GrounbdCheck")]
     public Transform groundCheckPos;
     public Vector3 groundCheckSize = new Vector3(0.5f, 0.05f, 0.5f);
     public LayerMask groundLayer;
+
+    [Header("Positions")]
+    public Collider Coll;
+    public Transform Sprt;
+    public Vector3[] sprtPos = new Vector3[9];
+    public Vector3[] collPos = new Vector3[9];
 
     [Header("Dash")]
     public float dashSpeed = 10f;
@@ -31,15 +38,19 @@ public class player : MonoBehaviour
 
     [Header("CoreMech")]
     public GameObject[] objetoscambiar;
-    bool isBall;
+    bool isBall = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Animations")]
+    public SpriteRenderer sr;
+    public Animator animator;
+    private float xPosLastFrame;
+
     void Start()
     {
         intmaxJumps = maxJumps;
+        Sprt.localPosition = sprtPos[0];
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isDashing)
@@ -47,6 +58,7 @@ public class player : MonoBehaviour
             rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
         }
         GroundCheck();
+        FlipcharacterX();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -56,9 +68,50 @@ public class player : MonoBehaviour
         if(horizontalMovement == 1)
         {
             isFacingRight = true;
-        }else if(horizontalMovement == -1){
-            isFacingRight = false;
+            animator.SetBool("isRoll", true);
+            animator.SetBool("isWalk", true);
         }
+        else if(horizontalMovement == -1){
+            isFacingRight = false;
+            animator.SetBool("isRoll", true);
+            animator.SetBool("isWalk", true);
+        }
+        else
+        {
+            animator.SetBool("isRoll", false);
+            animator.SetBool("isWalk", false);
+            if (isBall)
+            {
+                chPositions(0);
+            }
+            else
+            {
+                chPositions(1);
+            }
+        }
+        if (horizontalMovement != 0)
+        {
+            if (isBall)
+            {
+                chPositions(2);
+            }
+            else
+            {
+                chPositions(3);
+            }
+        }
+    }
+
+    private void FlipcharacterX()
+    {
+        if(transform.position.x > xPosLastFrame)
+        {
+            sr.flipX = false;
+        }else if (transform.position.x < xPosLastFrame)
+        {
+            sr.flipX = true;
+        }
+        xPosLastFrame = transform.position.x;
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -69,12 +122,15 @@ public class player : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
                 jumpsRemaining--;
+                animator.SetTrigger("isJump");
+                chPositions(5);
             }
             else if (context.canceled)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
                 jumpsRemaining--;
             }
+            
         }
     }
 
@@ -101,6 +157,8 @@ public class player : MonoBehaviour
         if (context.performed && canDash)
         {
             StartCoroutine(DashCoroutine());
+            animator.SetTrigger("isDash");
+            chPositions(4);
         }
     }
 
@@ -135,15 +193,36 @@ public class player : MonoBehaviour
         if (isBall)
         {
             isBall = false;
-            canDash = true;
-            intmaxJumps = 1;
+            canDash = false;
+            intmaxJumps = maxJumps;
+            animator.SetBool("isBall", false);
+            chPositions(1);
         }
         else
         {
             isBall = true;
-            canDash = false;
-            intmaxJumps = maxJumps;
+            canDash = true;
+            intmaxJumps = 1;
+            animator.SetBool("isBall", true);
+            chPositions(0);
         }
+        animator.SetTrigger("isTrans");
     }
 
+    private async void chPositions(int stt)
+    {
+        if(stt == 0 && !isBall || stt == 1 && isBall)
+        {
+            Sprt.localPosition = sprtPos[6];
+            await Task.Delay(600);
+            Sprt.localPosition = sprtPos[stt];
+        }else if(stt == 0 || stt == 1 || stt == 2 || stt == 3)
+        {
+            Sprt.localPosition = sprtPos[stt];
+        }else if (stt == 4 || stt == 5 || stt == 7 || stt == 8)
+        {
+            Sprt.localPosition = sprtPos[stt];
+            await Task.Delay(100);
+        }
+    }
 }
