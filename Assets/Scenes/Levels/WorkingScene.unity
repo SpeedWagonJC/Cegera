@@ -265,8 +265,6 @@ GameObject:
   - component: {fileID: 16551872}
   - component: {fileID: 16551876}
   - component: {fileID: 16551871}
-  - component: {fileID: 16551875}
-  - component: {fileID: 16551877}
   m_Layer: 0
   m_Name: Camera_nivel1
   m_TagString: Untagged
@@ -392,28 +390,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1174598965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &16551875
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16551870}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c8a4d02a822275443be648acd7d225f6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &16551876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,33 +402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd4e51b17cc06743afa290d5a8b6ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::camaramov
---- !u!54 &16551877
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16551870}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 124
-  m_CollisionDetection: 0
 --- !u!1001 &25140012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1590,7 +1539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &117603485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1685,7 +1634,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -3977,7 +3926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &308261117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4072,7 +4021,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 3
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -5446,7 +5395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &450341958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5541,7 +5490,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 2
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -12941,7 +12890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &968220952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13036,7 +12985,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -15003,7 +14952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1112057548
 Transform:
   m_ObjectHideFlags: 0
@@ -15113,7 +15062,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -15244,7 +15193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1126225395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15339,7 +15288,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 2
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -20666,7 +20615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1542021403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20761,7 +20710,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -23189,7 +23138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1721540027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23284,7 +23233,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 3
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -25068,7 +25017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1811019614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25163,7 +25112,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 3
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -25930,7 +25879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1886109765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26025,7 +25974,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 4
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -27097,36 +27046,13 @@ GameObject:
   - component: {fileID: 1998126640}
   - component: {fileID: 1998126639}
   - component: {fileID: 1998126638}
-  - component: {fileID: 1998126637}
   m_Layer: 0
   m_Name: Camera_nivel1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!95 &1998126637
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998126636}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c8a4d02a822275443be648acd7d225f6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_IsActive: 0
 --- !u!114 &1998126638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29041,11 +28967,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2298066555933465552, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.58
+      value: 103.4
       objectReference: {fileID: 0}
     - target: {fileID: 2298066555933465552, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.39
+      value: -33.9
       objectReference: {fileID: 0}
     - target: {fileID: 2298066555933465552, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29090,6 +29016,10 @@ PrefabInstance:
     - target: {fileID: 5616541338158672859, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
       propertyPath: dashSpeed
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616541338158672859, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
+      propertyPath: fuerzaSalto
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5616541338158672859, guid: 131796bf5f60f2947aa4e6305a59e1c6, type: 3}
       propertyPath: dashDuration
