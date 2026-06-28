@@ -7,6 +7,7 @@ public class ChanngeScene : MonoBehaviour
 {
     public string newScene;
     public SpriteRenderer sprt;
+    public string tag;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +22,7 @@ public class ChanngeScene : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Play"))
+        if(other.CompareTag(tag))
         {
             Debug.Log("chatch");
             sprt.enabled = true;

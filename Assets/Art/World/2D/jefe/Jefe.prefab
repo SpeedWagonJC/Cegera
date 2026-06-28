@@ -388,5 +388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67be8653a2267bc4aa2ff4b61aff5641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChanngeScene
-  newScene: 
+  newScene: FinalScene
   sprt: {fileID: 4970185949299299930}
+  tag: Player
